@@ -2,11 +2,26 @@
     <div class="thumbnail">
         <%= image_tag product.image_path %>
         <div class="caption">
-            <h4 class="pull-right"><%= product.price_vnd %></h4>
+
+          <% if product.price_vnd > 800000%>
+            <% @sale = 41 %>
+          <% elsif product.price_vnd > 200000%>
+              <% @sale = 31 %>
+          <% elsif product.price_vnd > 100000%>
+              <% @sale = 21 %>
+          <% else %>
+            <% @sale = 0 %>
+          <% end %>
+
+          <% @new_price = ((product.price_vnd * (1- @sale / 100.0))).round(-4) %>
+
+            <h4 class="pull-right"><%= @new_price %></h4>
             <h4><a href="#"><%= product.name %></a>
             </h4>
             <p><%= product.description %></p>
         </div>
+
+        <span class="label label-default">DISCOUNT <%= @sale%>% </span>
         <div class="ratings">
             <p class="pull-right">15 reviews</p>
             <p>

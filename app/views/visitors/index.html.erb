@@ -6,7 +6,7 @@
         <div class="col-md-3">
             <p class="lead">CoderStore</p>
             <div class="list-group">
-                <a href="#" class="list-group-item">Sort by Alphabetical</a>
+              <%= link_to 'Sort by Alphabetical', root_path(sort: 'alphabetical')%>
             </div>
         </div>
 
@@ -20,7 +20,7 @@
                             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                         </ol>
                         <div class="carousel-inner">
-                            <% @products.each_with_index do |product, index| %>                   
+                            <% @products.each_with_index do |product, index| %>
                                 <div class="<%= index == 0 ? 'item active' : 'item' %>">
                                     <%= image_tag product.image_path, class: 'slide-item', style: 'max-width: 800px; max-height: 300px;' %>
                                 </div>
@@ -41,9 +41,9 @@
                     <p class="lead"> Hello! Come check all that hats we have in our store. </h2>
                 </div>
             </div>
-            <% @products.in_groups_of(3) do |group| %>                
+            <% @products.in_groups_of(3) do |group| %>
                 <div class="row">
-                    <%= render group.compact %>   
+                    <%= render group.compact %>
                 </div>
             <% end %>
         </div>
@@ -68,4 +68,3 @@
 
 </div>
 <!-- /.container -->
-
